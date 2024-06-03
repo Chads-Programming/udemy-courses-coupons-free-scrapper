@@ -56,11 +56,9 @@ The main configuration for the scraper can be found in the config.js file. Key v
    Example:
 
 ```javascript
-Copy code
-module.exports = {
-url: 'https://www.udemy.com/courses/free/',
-selector: '.course-list--container--3zXPS > .course-list--content--1WUAz > .popper--popper--19faV',
-};
+const urlPage: string = "https://en.cursosdev.com/coupons?page=1";
+const classCard: string =
+  ".c-card.block.bg-white.shadow-md.hover\\:shadow-xl.rounded-lg.overflow-hidden";
 ```
 
 ## Contributing
@@ -77,5 +75,3 @@ Contributions are welcome! Please follow these steps:
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-Feel free to customize this README further to fit your specific needs.
