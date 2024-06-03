@@ -52,13 +52,9 @@ The scraper will navigate to the specified URL, collect the free Udemy courses, 
 The main configuration for the scraper can be found in the config.js file. Key variables include:
 
 1. url: The URL of the Udemy courses page to scrape.
-2. selector: The CSS selector for the course cards.
-   Example:
 
 ```javascript
-const urlPage: string = "https://en.cursosdev.com/coupons?page=1";
-const classCard: string =
-  ".c-card.block.bg-white.shadow-md.hover\\:shadow-xl.rounded-lg.overflow-hidden";
+URL_PAGE=https://xx.xxxxxx.com/xxxxx?xxxx=x;
 ```
 
 ## Contributing

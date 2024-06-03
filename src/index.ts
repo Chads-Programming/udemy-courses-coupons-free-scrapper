@@ -1,9 +1,10 @@
 import puppeteer from "puppeteer-extra";
 import AdblockerPlugin from "puppeteer-extra-plugin-adblocker";
+import "dotenv/config";
 import { evalueIndexTitle, htmlToDictionary } from "./helpers";
 import { promises as fs } from "fs";
 
-const urlPage: string = "https://en.cursosdev.com/coupons?page=1";
+const urlPage: string = process.env.URL_PAGE;
 const classCard: string =
   ".c-card.block.bg-white.shadow-md.hover\\:shadow-xl.rounded-lg.overflow-hidden";
 
