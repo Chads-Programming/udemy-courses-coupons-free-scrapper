@@ -81,7 +81,15 @@ async function getCard(): Promise<
       });
     }
 
-    await fs.writeFile("output/courses.json", JSON.stringify(courses));
+    // await fs.writeFile("output/courses.json", JSON.stringify(courses));
+    await fetch(process.env.URL_SEND_SCRAP, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${process.env.API_KEY}`,
+      },
+      credentials: "include",
+    });
 
     await browser.close();
     return courses;
