@@ -7,7 +7,7 @@ type Dict = {
   link: string;
 };
 
-export const htmlToDictionary = (htmlString: string) => {
+export const htmlToDictionary = (htmlString: string): Dict => {
   const dom = new JSDOM(htmlString);
   const doc = dom.window.document;
 
@@ -23,11 +23,9 @@ export const htmlToDictionary = (htmlString: string) => {
     "inline-flex px-2 mx-2 text-lg text-red-600 uppercase font-bold"
   )[0];
   const countdown = doc.getElementsByClassName("text-black days")[0];
-  const link = doc
-    .getElementsByClassName(
-      "mt-3 text-base sm:text-xs md:text-sm lg:text-lg xl:text-xl font-semibold bg-blue850 w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:bg-indigo-500"
-    )[0]
-    .getAttribute("href");
+  const linkElement = doc.getElementsByClassName(
+    "mt-3 text-base sm:text-xs md:text-sm lg:text-lg xl:text-xl font-semibold bg-blue850 w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:bg-indigo-500"
+  )[0];
 
   if (title) {
     dictionary.title = title.textContent.replace(/\s+/g, " ").trim();
@@ -39,8 +37,11 @@ export const htmlToDictionary = (htmlString: string) => {
   if (countdown) {
     dictionary.countdown = countdown.textContent.trim() + " " + "Days";
   }
-  if (link) {
-    dictionary.link = link;
+  if (linkElement) {
+    const link = linkElement.getAttribute("href");
+    if (link) {
+      dictionary.link = link;
+    }
   }
 
   return dictionary;

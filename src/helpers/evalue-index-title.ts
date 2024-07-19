@@ -2,12 +2,11 @@ export const evalueIndexTitle = () => {
   const technologiesDict = [
     "ui",
     "ux",
-    "ui/ux",
     "php",
     "sql",
     "python",
     "javascript",
-    "c#",
+    "csharp",
     "cpp",
     "c",
     "java",
@@ -47,22 +46,17 @@ export const evalueIndexTitle = () => {
   const courses = arrayCards.map((card, index) => {
     let itemText: string = "";
 
-    // Verificar que los nodos existen antes de acceder a ellos
     const titleNode = card.childNodes[3]?.childNodes[3];
     const discountNode =
       card.childNodes[3]?.childNodes[1]?.childNodes[1]?.childNodes[0];
 
-    if (titleNode && "innerText" in titleNode) {
-      if (typeof titleNode.innerText === "string") {
-        itemText = titleNode.innerText;
-      }
+    if (titleNode && titleNode instanceof HTMLElement) {
+      itemText = titleNode.innerText;
     }
 
-    if (discountNode && "innerText" in discountNode) {
-      if (typeof discountNode.innerText === "string") {
-        if (discountNode.innerText !== "FREE") {
-          return null; // Return null if the discount is not "FREE"
-        }
+    if (discountNode && discountNode instanceof HTMLElement) {
+      if (discountNode.innerText !== "FREE") {
+        return null;
       }
     }
 
@@ -76,9 +70,7 @@ export const evalueIndexTitle = () => {
       return (
         course &&
         technologiesDict.some((tech) =>
-          new RegExp(`\\b${tech.toLowerCase()}\\b`).test(
-            course.title.toLowerCase()
-          )
+          new RegExp(`\\b${tech.toLowerCase()}\\b`).test(course.title)
         )
       );
     }),

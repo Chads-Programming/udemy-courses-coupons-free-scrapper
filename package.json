@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/index.cjs",
     "build": "tsc && tsc-alias && mv dist/index.js dist/index.cjs",
     "dev": "rm -rf dist && tsc && tsc-alias && mv dist/index.js dist/index.cjs && node dist/index.cjs"
   },
@@ -13,7 +14,7 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "jsdom": "^24.1.0",
-    "puppeteer": "^22.10.0",
+    "puppeteer": "^22.13.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-adblocker": "^2.13.6",
     "tsc-alias": "^1.8.10",
