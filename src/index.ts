@@ -89,6 +89,7 @@ async function getCard(): Promise<
         Authorization: `${process.env.API_KEY}`,
       },
       credentials: "include",
+      body: JSON.stringify(courses),
     });
 
     await browser.close();
@@ -100,4 +101,9 @@ async function getCard(): Promise<
   }
 }
 
-getCard();
+getCard().catch(() =>
+  getCard()
+    .catch(() => getCard())
+    .catch(() => getCard())
+    .catch(() => getCard())
+);
